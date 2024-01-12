@@ -1,42 +1,59 @@
-# Hex Game
+# Projet IA
 
-Place tiles to connect your two borders of the board. Play against an AI, implement human vs. human game mode or create your own AI strategy in `strategy.py`.
+## Description
+Ce projet implémente un jeu de Hex avec différentes stratégies pour les joueurs, y compris humain, random et minimax. Le jeu peut être joué en mode tournoi où différentes stratégies s'affrontent.
 
-## Dependencies
+## Installation
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/Aichael29/projet-ia.git
+   cd projet-ia
+   ```
 
-`pip install -r requirements`
+2. Installez les dépendances requises :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-
-## Run the program
-
-```
-$ python main.py -h
-
-usage: main.py [-h] [--size SIZE] [--games GAMES] [--no-ui] [--player {human,random,minimax}] [--other {human,random,minimax}]
-
-Runs a game of Hex.
-
-options:
-  -h, --help            show this help message and exit
-  --size SIZE           Size of the board (Default: 7)
-  --games GAMES         Number of games to play in tournament. Only if no human (default: 5)
-  --no-ui               GUI is not displayed. Only if no human.
-  --player {human,random,minimax}
-                        Strategy for player1 (default: human)
-  --other {human,random,minimax}
-                        Strategy for player2 (default: random)
+## Utilisation
+Accédez au répertoire source :
+```bash
+cd projet-ia/source
 ```
 
-## Implementing a new strategie
+Exécutez le jeu avec les paramètres souhaités :
+```bash
+python main.py --player [strategy1] --other [strategy2] --size [board_size] --games [num_games]
+```
 
-1. Extend the `Player` class
-2. Implement the `start()` function
-3. Add your newly created class in `str2strat` at the bottom of the `strategy.py` file
-4. Run the program with `python main.py --other my_new_ai_strat` to experiment !
+- `strategy1` et `strategy2` peuvent être "humain", "random" ou "minimax".
+- `board_size` spécifie la taille du plateau de jeu (par défaut : 7).
+- `num_games` spécifie le nombre de parties à jouer dans le tournoi (par défaut : 5).
 
-Tip: to debug your AI use a small board (2, 3, 4).
+Exemple :
+```bash
+python main.py --player human --other random --size 7 --games 5
+```
 
-## Comparing AI strategies
+## Résultats du Tournoi
+Après avoir exécuté le tournoi, le programme affichera le score final et les taux de victoire pour chaque stratégie.
 
-Use the `--no-ui` and `--games` options to run a lot of simulation quickly.
-For example, `python main.py --player random --other minimax --no-ui -- games 100` will run 100 games between random AI and minimax AI.
+## Stratégies
+### Humain
+- Un joueur humain peut participer au jeu en fournissant une entrée pendant son tour.
+
+### Aléatoire
+- L'ordinateur effectue des mouvements aléatoires pendant le jeu.
+
+### Minimax
+- L'ordinateur utilise une implémentation basique de l'algorithme Minimax pour effectuer des mouvements stratégiques.
+
+## Structure du Code
+- `main.py` : Le script principal pour exécuter le jeu et les tournois.
+- `classes/` : Répertoire contenant les principales classes du jeu.
+  - `strategy.py` : Définit les stratégies des joueurs.
+  - `tournament.py` : Implémente la logique du tournoi.
+- `requirements.txt` : Liste des dépendances du projet.
+
+## Développeurs
+- aicha elfelchaoui & firas boustila
